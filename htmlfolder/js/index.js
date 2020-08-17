@@ -5,10 +5,9 @@ var Gettimer
 var Getcurrentprice
 var Retreievetable
 
-$.get("/getcurrentprice",function(data){
-  $('#currentprice').html("Starting Price From: AU $" +data.price)
-});
-
+Retreievetable=setInterval(retreivetable,100)
+Gettimer=setInterval(getime,100)
+Getcurrentprice=setInterval(getcurrentprice,100)
 //Create click event on Submit button
 $("#click").on("click", myFunction);
 
@@ -47,10 +46,6 @@ function myFunction() {
       submit=true;
       $('#username').val('')
       $('#price').val('')
-      Gettimer=setInterval(getime,100)
-      Getcurrentprice=setInterval(getcurrentprice,100)
-      Retreievetable=setInterval(retreivetable,100)
-
       M.toast({html: "Successful!" ,classes: 'green  rounded',displayLength: 6000})
   }).fail(function (jqXHR, textStatus) {
     M.toast({html: jqXHR.responseText, classes: 'red  rounded',displayLength: 6000})
@@ -59,24 +54,32 @@ function myFunction() {
 }
 //Function get time and get the winner when time=0
 function getime(){
-  if(submit==true){
     $.get("/Timer",function(data)
     {
+      if(data.min!=null){
       $('#timer').html(data.min +" minutes"+ "  "+data.sec+" seconds")
      if(data.min==0&&data.sec==0){        
       $('#result').html("CONGRATULATIONS FOR WINNING THIS AUCTION IS: " +data.winner)
        clearInterval(Gettimer)
        clearInterval(Getcurrentprice)
        clearInterval(Retreievetable) 
+     }
    }
+
    });
- }
+  
 }
 //Function get current price
 function getcurrentprice(){
   $.get("/getcurrentprice",function(data){
+   if(data.price!=1000){
     $('#currentprice').html("Current Auction Price: AU $" +data.price +" (You must bid higher than current auction price 50$ and can not bid 2 times CONSECUTIVELY)"  ) 
+   }
+   else{
+    $('#currentprice').html("Starting Price From: AU $" +data.price)
+   }
    });
+
 }
 //Function to updata table
 function retreivetable(){
