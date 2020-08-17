@@ -57,11 +57,7 @@ app.use("/",function(req,res,next){
     var price=parseInt(req.query.num2)
     var id
    var bool= checkpreviousbet(listuser,username)
-    if(countdowntime!=null&&countdowntime["winner"]!="Empty"){
-    //Error when auction session is closed    
-    res.status(400).send("Error: The auction time is closed. You can not bet anymore")
-    }
-    else if(bool==false){
+    if(bool==false){
     //Error when you are the latest bidder. You can not bid    
     res.status(400).send("Error:Your bidding is the latest one and you can not bid 2 times CONSECUTIVELY. Please wait other person bid for continue bidding")
     }
@@ -106,6 +102,7 @@ app.get("/Timer",function(req,res){
       }
       else{
         countdowntime["winner"]=listuser.tail.name
+        countdowntime["lastprice"]=listuser.tail.price
         res.send(countdowntime)
       }
     }
@@ -164,6 +161,11 @@ app.get("/retrivedatatotable",function(req,res){
 
 //Retrieve the information of user from UI and update new countdown time.
 app.get("/pushdata",function(req,res){
+    if(countdowntime!=null&&countdowntime["winner"]!="Empty"){
+        //Error when auction session is closed    
+        res.status(400).send("Error: The auction time is closed. You can not bet anymore")   
+    }
+    else{
     res.setHeader('Content-Type', 'text/html');
     var username=req.query.num1
     var price=parseInt(req.query.num2)
@@ -182,7 +184,7 @@ app.get("/pushdata",function(req,res){
   countdownreal=new Date (countdown );
   countdownreal.setMinutes ( countdown.getMinutes() + 2 );
   res.send(listobject)
-  
+}
 })
 
 

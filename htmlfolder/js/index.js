@@ -56,10 +56,10 @@ function myFunction() {
 function getime(){
     $.get("/Timer",function(data)
     {
-      if(data.min!=null){
+      if(data.min!=null||data.sec!=null){
       $('#timer').html(data.min +" minutes"+ "  "+data.sec+" seconds")
-     if(data.min==0&&data.sec==0){        
-      $('#result').html("CONGRATULATIONS FOR WINNING THIS AUCTION IS: " +data.winner)
+      if(data.min==0&&data.sec==0){        
+      $('#result').html("CONGRATULATIONS FOR WINNING THIS AUCTION IS: " +data.winner+" with price: " +data.lastprice+" AU $")
        clearInterval(Gettimer)
        clearInterval(Getcurrentprice)
        clearInterval(Retreievetable) 
@@ -72,7 +72,7 @@ function getime(){
 //Function get current price
 function getcurrentprice(){
   $.get("/getcurrentprice",function(data){
-   if(data.price!=1000){
+   if(data.count!=0){
     $('#currentprice').html("Current Auction Price: AU $" +data.price +" (You must bid higher than current auction price 50$ and can not bid 2 times CONSECUTIVELY)"  ) 
    }
    else{
