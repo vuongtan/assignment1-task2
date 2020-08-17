@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "express":"~4.17.1",
     "env": "^0.0.2",
     "moment": "^2.27.0"
   }
