@@ -1,0 +1,98 @@
+  <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+     
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      <!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body >
+    <div class="card-content valign center">
+    <h1>Ebay Auction Page</h1>
+     </div>
+    <div class="row">      
+      <div class="col s8">
+            <div class="col s3">
+              <img src="../images/iphone.jpg" alt="" class="rectangle responsive-img"> <!-- notice the "circle" class -->
+            </div>
+            <div class="col s8">
+            <div class="row">
+              <span class="black-text">
+All‑new dual‑camera system. Take your photos from wide to ultra-wide. A redesigned interface uses the new Ultra-Wide camera to show you what’s happening outside the frame — and lets you capture it. Shoot and edit videos as easily as you do photos. It’s the world’s most popular camera, now with a whole new perspective.
+Shoot and edit the highest-quality video in a smartphone. iPhone 11 shoots beautifully sharp 4K video at 60 fps across all its cameras. The Ultra-Wide camera captures four times more scene, so it’s perfect for action shots like your dog catching a frisbee. If you’re recording a performance — say, your kid’s piano recital - when you zoom in, the audio zooms too. And now you can edit videos as easily as you do photos.
+             </span>
+        </div>
+       <div class="row">
+        <label id="currentprice" class="red-text" style="font-size:22px"  name="Price"></label>
+        </div>
+            </div>
+            <div class="row">
+        <div class="input-field col s12">
+          <input id="username" type="text" required="" class="validate">
+          <label class="black-text" for="username">Username</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="price" type="number" required="" class="validate" >
+          <label class="black-text" for="price">Price</label>
+        </div>
+      </div>
+        <div class="row">
+        <div class="input-field col s12">
+   <button class="btn waves-effect waves-light" id="click"   type="submit"  >Submit</button>
+        </div>
+           <label class="black-text" style="font-size:42px" id="result" class="black-text"></label>
+      </div>
+      </div>
+
+
+      <div class="col s4">
+           <div class ="row s5">
+
+            <div class="col s10">
+              <label  class="red-text" style="font-size:32px" >Auction Time Left:</label></br>
+              <label id="timer" class="red-text" style="font-size:32px" ></label>
+            </div>
+            </div>
+
+            <div class ="row s5">
+
+            <div class="col s10">
+      <table class="highlight" id="table">
+        <thead id="head">
+          <tr>
+              <th data-field="id">User ID</th>
+              <th data-field="name">Name</th>
+              <th data-field="price">Price Auction</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+      </table>
+            </div>
+            </div>
+
+      </div>
+       </div>
+
+
+
+
+      <!--JavaScript at end of body for optimized loading-->
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+      <script src="js/index.js"></script> 
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+    </body>
+  </html>
+  
