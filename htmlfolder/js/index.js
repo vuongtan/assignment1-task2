@@ -6,7 +6,7 @@ var Getcurrentprice
 var Retreievetable
 
 $.get("/getcurrentprice",function(data){
-  $('#currentprice').html("Starting Price: AU $" +data.price)
+  $('#currentprice').html("Starting Price From: AU $" +data.price)
 });
 
 //Create click event on Submit button
